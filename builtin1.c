@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * _myhistory - preceded, the history list displayed, line command by one
- *              starting at 0 with line num
- * @info: use the Structure containing potential arguments to maintain it
+ * _myhistory - displays the history list, one command by line, preceded
+ *              with line numbers, starting at 0.
+ * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
- *  Return: 0 Always
+ *  Return: Always 0
  */
 int _myhistory(info_t *info)
 {
@@ -14,11 +14,11 @@ int _myhistory(info_t *info)
 }
 
 /**
- * unset_alias - sets the string to alias
- * @info: struct the parameter
+ * unset_alias - sets alias to string
+ * @info: parameter struct
  * @str: the string alias
  *
- * Return: 0 Always on success, 1 Always on error
+ * Return: Always 0 on success, 1 on error
  */
 int unset_alias(info_t *info, char *str)
 {
@@ -37,11 +37,11 @@ int unset_alias(info_t *info, char *str)
 }
 
 /**
- * set_alias - sets the string to alias
- * @info: struct the parameter
+ * set_alias - sets alias to string
+ * @info: parameter struct
  * @str: the string alias
  *
- * Return: 0 Always on success, 1 Always on error
+ * Return: Always 0 on success, 1 on error
  */
 int set_alias(info_t *info, char *str)
 {
@@ -58,10 +58,10 @@ int set_alias(info_t *info, char *str)
 }
 
 /**
- * print_alias - alias string printed
- * @node: alias node
+ * print_alias - prints an alias string
+ * @node: the alias node
  *
- * Return: 0 Always on success, 1 Always on error
+ * Return: Always 0 on success, 1 on error
  */
 int print_alias(list_t *node)
 {
@@ -81,10 +81,10 @@ int print_alias(list_t *node)
 }
 
 /**
- * _myalias - alias builtin mimic(man alias)
- * @info: use the Structure containing potential arguments to maintain it
+ * _myalias - mimics the alias builtin (man alias)
+ * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
- *  Return: 0 Always
+ *  Return: Always 0
  */
 int _myalias(info_t *info)
 {
@@ -94,11 +94,11 @@ int _myalias(info_t *info)
 
 	if (info->argc == 1)
 	{
-		info->alias = node;
+		node = info->alias;
 		while (node)
 		{
 			print_alias(node);
-			node->next = node;
+			node = node->next;
 		}
 		return (0);
 	}

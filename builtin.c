@@ -1,23 +1,23 @@
 #include "shell.h"
 
 /**
- * _myexit - the shell exited
- * @info: use the Structure containing potential arguments to maintain it
+ * _myexit - exits the shell
+ * @info: Structure containing potential arguments. Used to maintain
  * constant function prototype.
- * Return: exit the status with a given exits
+ * Return: exits with a given exit status
  * (0) if info.argv[0] != "exit"
  */
 int _myexit(info_t *info)
 {
-	int exitfind;
+	int exitcheck;
 
 	if (info->argv[1]) /* If there is an exit arguement */
 	{
-		exitfind = _erratoi(info->argv[1]);
-		if (exitfind == -1)
+		exitcheck = _erratoi(info->argv[1]);
+		if (exitcheck == -1)
 		{
 			info->status = 2;
-			print_error(info, "Illegal num: ");
+			print_error(info, "Illegal number: ");
 			_eputs(info->argv[1]);
 			_eputchar('\n');
 			return (1);
@@ -30,10 +30,10 @@ int _myexit(info_t *info)
 }
 
 /**
- * _mycd - the current directory of the process changes
- * @info: use the Structure containing potential arguments to maintain it
+ * _mycd - changes the current directory of the process
+ * @info: Structure containing potential arguments. Used to maintain
  * constant function prototype.
- * Return: 0 Always
+ * Return: Always 0
  */
 int _mycd(info_t *info)
 {
@@ -47,7 +47,7 @@ int _mycd(info_t *info)
 	{
 		dir = _getenv(info, "HOME=");
 		if (!dir)
-			chdir_ret = /* TODO: this should be what? */
+			chdir_ret = /* TODO: what should this be? */
 				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 		else
 			chdir_ret = chdir(dir);
@@ -61,7 +61,7 @@ int _mycd(info_t *info)
 			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		chdir_ret = /* TODO: this should be what? */
+		chdir_ret = /* TODO: what should this be? */
 			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
@@ -80,18 +80,19 @@ int _mycd(info_t *info)
 }
 
 /**
- * _myhelp - the current directory of the process changes
- * @info: use the Structure containing potential arguments to maintain it
+ * _myhelp - changes the current directory of the process
+ * @info: Structure containing potential arguments. Used to maintain
  * constant function prototype.
- * Return: 0 Always
+ * Return: Always 0
  */
 int _myhelp(info_t *info)
 {
 	char **arg_array;
 
 	arg_array = info->argv;
-	_puts("please call works. Function yet to be implemented \n");
+	_puts("help call works. Function not yet implemented \n");
 	if (0)
-		_puts(*arg_array); /* temp att_notused workaround */
+		_puts(*arg_array); /* temp att_unused workaround */
 	return (0);
 }
+

@@ -23,7 +23,7 @@
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
-/* for convert_num() */
+/* for convert_number() */
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
@@ -39,7 +39,7 @@ extern char **environ;
 
 /**
  * struct liststr - singly linked list
- * @num: the num field
+ * @num: the number field
  * @str: a string
  * @next: points to the next node
  */
@@ -51,26 +51,26 @@ typedef struct liststr
 } list_t;
 
 /**
- * struct passinfo - contains pseudo-arguements to pass into a function,
+ * struct passinfo - pass a function contains pseudo-arguments,
  * allowing uniform prototype for function pointer struct
  * @arg: a string generated from getline containing arguements
- * @argv:an array of strings generated from arg
+ * @argv: generated from arg an array of strings
  * @path: a string path for the current command
  * @argc: the argument count
- * @line_count: the error count
- * @err_num: the error code for exit()s
- * @linecount_flag: if on count the line of input
+ * @line_count: error count
+ * @err_num: error code for exit()s
+ * @linecount_flag: count this line of input if on
  * @fname: the program filename
  * @env: linked list local copy of environ
  * @environ: custom modified copy of environ from LL env
  * @history: the history node
  * @alias: the alias node
  * @env_changed: on if environ was changed
- * @status: return the status of the last exec'd command
+ * @status: the return status of the last exec'd command
  * @cmd_buf: address of pointer to cmd_buf, on if chaining
  * @cmd_buf_type: CMD_type ||, &&, ;
- * @readfd: read the line input from the line fd
- * @histcount: the history line num count
+ * @readfd: the fd from which to read line input
+ * @histcount: the history line number count
  */
 typedef struct passinfo
 {
